@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,7 +11,16 @@ public class PlayerMovement : MonoBehaviour
     float jumpPower = 5f;
     bool isGrounded = false;
     float distToGround;
+
+    // Button movements
+    public Button upButton;
+    public Button rightButton;
+    public Button leftButton;
+
+    // Level reset position
     public Vector3 teleportPosition = new Vector3(-12f, -12f, 0f);
+
+    public Canvas GameOver;
 
 
     Rigidbody2D rb;
@@ -22,14 +32,19 @@ public class PlayerMovement : MonoBehaviour
         distToGround = 0.1f;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        upButton.onClick.AddListener(MoveUp);
+        rightButton.onClick.AddListener(MoveRight);
+        leftButton.onClick.AddListener(MoveLeft);
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleTouchInput();
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-
+        
         FlipSprite();
 
         if (verticalInput > 0 && isGrounded)
@@ -45,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
+        Debug.Log(horizontalInput);
     }
 
     void FlipSprite()
@@ -55,6 +71,62 @@ public class PlayerMovement : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
+        }
+    }
+
+    void MoveUp()
+    {
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            animator.SetBool("isJumping", true);
+        }
+    }
+
+    void MoveRight()
+    {
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    void MoveLeft()
+    {
+        rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+        animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    // Handle touch input for buttons
+    void HandleTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    CheckButtonTouch(touch.position);
+                    break;
+            }
+        }
+    }
+
+    // Check which button was touched
+    void CheckButtonTouch(Vector2 touchPosition)
+    {
+        if (upButton.GetComponent<RectTransform>().rect.Contains(touchPosition))
+        {
+            MoveUp();
+        }
+        else if (rightButton.GetComponent<RectTransform>().rect.Contains(touchPosition))
+        {
+            MoveRight();
+        }
+        else if (leftButton.GetComponent<RectTransform>().rect.Contains(touchPosition))
+        {
+            MoveLeft();
         }
     }
 
@@ -77,9 +149,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("reset gamddezae");
             transform.position = teleportPosition;
-            //TODO afficher menu game over et recommencer;
+            GameOver.gameObject.SetActive(true);
+            //TODO afficher menu game over;
         }
        // Debug.Log("Entered collision with " + collision.gameObject.name);
+
         isGrounded = true;
         animator.SetBool("isJumping", false);
     }
@@ -93,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Just stop hitting a collider 2D
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         //Debug.Log("Exited collision with " + collision.gameObject.name);
