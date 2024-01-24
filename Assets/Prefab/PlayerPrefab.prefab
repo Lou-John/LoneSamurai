@@ -1,4 +1,4 @@
-%YAML 1.1
+  %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1269281623544292929
 GameObject:
@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 250.99149, y: 250.99149, z: 2.5099149}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8408083453324315890}
@@ -35,6 +35,7 @@ Transform:
 --- !u!1001 &2755005497788674326
 PrefabInstance:
   m_ObjectHideFlags: 0
+
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
@@ -93,4 +94,5 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5950448889701957092, guid: 2d1bf65208711a740b86dad223d86099, type: 3}
   m_PrefabInstance: {fileID: 2755005497788674326}
+
   m_PrefabAsset: {fileID: 0}
