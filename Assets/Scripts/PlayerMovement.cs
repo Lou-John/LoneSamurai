@@ -53,10 +53,4 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = ls;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-        animator.SetBool("isJumping", false);
-    }
 }
