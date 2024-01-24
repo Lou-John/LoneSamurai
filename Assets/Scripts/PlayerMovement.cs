@@ -4,9 +4,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     float horizontalInput;
+    float verticalInput;
     float moveSpeed = 5f;
     bool isFacingRight = false;
-    float jumpPower = 7f;
+    float jumpPower = 10f;
     bool isGrounded = false;
 
     Rigidbody2D rb;
@@ -23,14 +24,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         FlipSprite();
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (verticalInput > 0 && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            isGrounded = false;
-            animator.SetBool("isJumping", !isGrounded);
+            // Do not set isGrounded to false here
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -55,6 +57,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
-        animator.SetBool("isJumping", !isGrounded);
+        animator.SetBool("isJumping", false);
     }
 }
