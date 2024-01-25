@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 260814799}
   - component: {fileID: 260814801}
   - component: {fileID: 260814800}
+  - component: {fileID: 260814802}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -366,6 +367,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260814798}
   m_CullTransparentMesh: 1
+--- !u!114 &260814802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260814798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be395fed45d30784cb1d174e75aedd65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMixer: {fileID: 24100000, guid: 464ca51f43c0edf4388e83f36a83a68d, type: 2}
+  musicSlider: {fileID: 1222327714}
 --- !u!1 &279734271
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +880,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.598517
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1140,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1507,7 +1522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 493, y: 50}
+  m_AnchoredPosition: {x: 750, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &841846208
@@ -1897,7 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1947,8 +1962,8 @@ RectTransform:
   - {fileID: 841846207}
   - {fileID: 279734272}
   - {fileID: 931108470}
-  - {fileID: 464074460}
   - {fileID: 604916451}
+  - {fileID: 464074460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3133,8 +3148,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 84.73215, y: 50.069}
   m_SizeDelta: {x: 169.4643, y: 100.138}
+=======
+  m_AnchoredPosition: {x: 126.32968, y: 71.55833}
+  m_SizeDelta: {x: 252.6594, y: 143.1166}
+>>>>>>> 3d310348f54b4d2e58b9d7968aecd98c1393ce57
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1422490721
 MonoBehaviour:
@@ -3523,7 +3543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80.1}
+  m_AnchoredPosition: {x: 126.33, y: 96}
   m_SizeDelta: {x: 210, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877502080
@@ -3659,7 +3679,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1919406472}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 11.598517
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
