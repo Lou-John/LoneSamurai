@@ -133,13 +133,25 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        Debug.Log("reset game");
-
-
-
-        isGrounded = true;
-        animator.SetBool("isJumping", false);
+        switch (collision.gameObject.name)
+        {
+            case "FIN 1":
+                Debug.Log(collision.gameObject.name);
+                MyEvents.InvokeSomeEvent(1);
+                break;
+            case "FIN 2":
+                MyEvents.InvokeSomeEvent(2);
+                break;
+            case "FIN 3":
+                MyEvents.InvokeSomeEvent(3);
+                break;
+            case "death":
+                transform.position = teleportPosition;
+                GameOver.gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
 
