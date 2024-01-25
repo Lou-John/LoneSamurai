@@ -487,7 +487,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
 --- !u!1001 &604607464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -545,7 +544,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fffeef16b971b3844ab3afe05a928c59, type: 3}
-=======
 --- !u!82 &475055840
 AudioSource:
   m_ObjectHideFlags: 0
@@ -642,8 +640,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
->>>>>>> 3d310348f54b4d2e58b9d7968aecd98c1393ce57
---- !u!1 &609555980
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
