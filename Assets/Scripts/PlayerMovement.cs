@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float jumpPower = 5f;
     bool isGrounded = false;
     float distToGround;
-    public Vector3 teleportPosition = new Vector3(-12f, -12f, 0f);
+    public Vector3 teleportPosition = new Vector3(0f, 0f, 0f);
 
 
     Rigidbody2D rb;
@@ -59,16 +59,29 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        Debug.Log("reset game");
-
-
-
-        isGrounded = true;
-        animator.SetBool("isJumping", false);
+        Debug.Log(collision.gameObject.name);
+        switch (collision.gameObject.name)
+        {
+            case "FIN 1":
+                Debug.Log(collision.gameObject.name);
+                MyEvents.InvokeSomeEvent(1);
+                break;
+            case "FIN 2":
+                MyEvents.InvokeSomeEvent(2);
+                break;
+            case "FIN 3":
+                MyEvents.InvokeSomeEvent(3);
+                break;
+            case "death":
+                transform.position = new Vector3(-6, -2, 0);
+                break;
+            default:
+                break;
+        }
     }
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name.Contains("Triangle"))
         {
             Debug.Log("reset gamddezae");
-            transform.position = teleportPosition;
+            transform.position = new Vector3(-6, -2, 0);
             //TODO afficher menu game over et recommencer;
         }
        // Debug.Log("Entered collision with " + collision.gameObject.name);
